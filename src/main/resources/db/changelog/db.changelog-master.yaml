@@ -1,0 +1,39 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: alex
+      changes:
+        - createTable:
+            tableName: test_entity
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: test_entity_id_pk
+              - column:
+                  name: document_id
+                  type: uuid
+              - column:
+                  name: document_date
+                  type: timestamptz
+              - column:
+                  name: dictionary_value_id
+                  type: uuid
+              - column:
+                  name: dictionary_value_name
+                  type: text
+              - column:
+                  name: sort_order
+                  type: text
+                  constraints:
+                    nullable: false
+              - column:
+                  name: test_id
+                  type: uuid
+              - column:
+                  name: test_name
+                  type: text
+                  constraints:
+                    nullable: false
