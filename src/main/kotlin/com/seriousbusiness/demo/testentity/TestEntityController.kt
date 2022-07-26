@@ -20,13 +20,13 @@ class TestEntityController(
     }
 
     @GetMapping("/test/{id}", produces = [APPLICATION_JSON_VALUE])
-    fun find(@PathVariable(name = "id") id: String ): TestEntity {
-        return repository.findById(UUID.fromString(id)).orElseThrow {
+    fun find(@PathVariable(name = "id") id: UUID): TestEntity {
+        return repository.findById(id).orElseThrow {
             ResponseStatusException(HttpStatus.BAD_REQUEST, "Not Found! id=$id")
         }
     }
 
-    @PatchMapping("/test/{id}", consumes = [APPLICATION_JSON_VALUE], produces = [APPLICATION_JSON_VALUE])
+    @PatchMapping("/test/{id}", consumes = [APPLICATION_JSON_VALUE])
     fun update(
         @PathVariable(name = "id") id: UUID,
         @RequestBody updated: TestEntity
